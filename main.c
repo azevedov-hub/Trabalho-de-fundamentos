@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "menu.h"
 
   typedef struct {
       char  marca[50];
@@ -27,8 +28,10 @@
 
 int main(void){
 
+    int opcao; 
 
 
+menu_inicial(&opcao);
 
 
     return 0;
