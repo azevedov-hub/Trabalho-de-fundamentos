@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "menu.h"
+#include "condutor.h"
 
   typedef struct {
       char  marca[50];
@@ -29,10 +29,10 @@
 int main(void){
 
     int opcao; 
-
+Condutor x;
 
 menu_inicial(&opcao);
-
+condutor(&x);
 
     return 0;
 }
