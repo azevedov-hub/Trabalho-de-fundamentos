@@ -1,12 +1,65 @@
 #include <stdio.h>
-#include <locale.h>
 #include <string.h>
+#include <locale.h>
 #include <ctype.h>
 #include "Veiculo.h"
+
+#define MAX_MODELOS 5
+
+static const char *marcas[] = {
+    "HONDA",
+    "TOYOTA",
+    "FIAT",
+    "FORD",
+    "CHEVROLET",
+    "VOLKSWAGEN",
+    "BMW",
+    "MERCEDES",
+    "AUDI",
+    "HYUNDAI",
+    "RENAULT",
+    "NISSAN",
+    "JEEP",
+    "PEUGEOT",
+    "CITROEN",
+    "MITSUBISHI",
+    "KIA",
+    "VOLVO",
+    "PORSCHE",
+    "FERRARI"
+};
+
+#define TOTAL_MARCAS (sizeof(marcas) / sizeof(marcas[0]))
+
+// Lista de modelos, na MESMA ordem das marcas acima
+// (Obs.: nomes sem espacos/hifens, pois o modelo digitado so aceita alfanumericos)
+static const char *modelos[TOTAL_MARCAS][MAX_MODELOS] = {
+    /* HONDA      */ {"CIVIC", "CITY", "FIT", "CRV", "ACCORD"},
+    /* TOYOTA     */ {"COROLLA", "HILUX", "YARIS", "CAMRY", "RAV4"},
+    /* FIAT       */ {"UNO", "PALIO", "ARGO", "TORO", "MOBI"},
+    /* FORD       */ {"KA", "FIESTA", "FOCUS", "RANGER", "ECOSPORT"},
+    /* CHEVROLET  */ {"ONIX", "CELTA", "CORSA", "S10", "TRACKER"},
+    /* VOLKSWAGEN */ {"GOL", "FOX", "POLO", "VIRTUS", "TCROSS"},
+    /* BMW        */ {"SERIE3", "SERIE5", "X1", "X5", "M3"},
+    /* MERCEDES   */ {"CLASSEA", "CLASSEC", "CLASSEE", "GLA", "GLC"},
+    /* AUDI       */ {"A3", "A4", "Q3", "Q5", "TT"},
+    /* HYUNDAI    */ {"HB20", "CRETA", "TUCSON", "IX35", "SANTAFE"},
+    /* RENAULT    */ {"SANDERO", "LOGAN", "DUSTER", "KWID", "CAPTUR"},
+    /* NISSAN     */ {"MARCH", "VERSA", "KICKS", "SENTRA", "FRONTIER"},
+    /* JEEP       */ {"RENEGADE", "COMPASS", "COMMANDER", "WRANGLER", "CHEROKEE"},
+    /* PEUGEOT    */ {"208", "2008", "3008", "308", "PARTNER"},
+    /* CITROEN    */ {"C3", "C4CACTUS", "AIRCROSS", "C4LOUNGE", "JUMPY"},
+    /* MITSUBISHI */ {"L200", "PAJERO", "ASX", "ECLIPSECROSS", "OUTLANDER"},
+    /* KIA        */ {"SPORTAGE", "SORENTO", "CERATO", "PICANTO", "SOUL"},
+    /* VOLVO      */ {"XC60", "XC90", "S60", "V40", "XC40"},
+    /* PORSCHE    */ {"911", "CAYENNE", "MACAN", "PANAMERA", "BOXSTER"},
+    /* FERRARI    */ {"488", "F8", "ROMA", "PORTOFINO", "SF90"}
+};
 
 void cadastrarVeiculo(Veiculo *v)
 {
     int i, valido;
+    int indiceMarca = -1;
 
     setlocale(LC_ALL, "Portuguese_Brazil");
 
@@ -18,30 +71,59 @@ void cadastrarVeiculo(Veiculo *v)
     printf("Cadastro de veiculo\n");
     printf("========================\n");
 
-    // Marca
-    while (1)
+
+
+// Marca
+while (1)
+{
+    printf("\n========================\n");
+    printf("Marca do carro: ");
+    printf("\n========================\n");
+
+    scanf("%49s", v->marca);
+
+    valido = 1;
+
+    // Verifica se possui apenas letras
+    for (i = 0; v->marca[i] != '\0'; i++)
     {
-        printf("\n========================\n");
-        printf("Marca do carro: ");
-        printf("\n========================\n");
-
-        scanf("%49s", v->marca);
-
-        valido = 1;
-
-        for (i = 0; v->marca[i] != '\0'; i++)
+        if (!isalpha(v->marca[i]))
         {
-            if (!isalpha(v->marca[i]))
-            {
-                valido = 0;
-            }
-        }
-
-        if (valido)
+            valido = 0;
             break;
-
-        printf("\nMarca invalida! Digite apenas letras.\n");
+        }
     }
+
+    if (!valido)
+    {
+        printf("\nMarca invalida! Digite apenas letras.\n");
+        continue;
+    }
+
+    // Converte a marca digitada para maiúsculas
+    for (i = 0; v->marca[i] != '\0'; i++)
+    {
+        v->marca[i] = toupper(v->marca[i]);
+    }
+
+    // Procura a marca na lista
+    valido = 0;
+
+    for (i = 0; i < TOTAL_MARCAS; i++)
+    {
+        if (strcmp(v->marca, marcas[i]) == 0)
+        {
+            valido = 1;
+            indiceMarca = i;
+            break;
+        }
+    }
+
+    if (valido)
+        break;
+
+    printf("\nMarca nao cadastrada!\n");
+}
 
     // Modelo
     while (1)
@@ -59,13 +141,38 @@ void cadastrarVeiculo(Veiculo *v)
             if (!isalnum(v->modelo[i]))
             {
                 valido = 0;
+                break;
+            }
+        }
+
+        if (!valido)
+        {
+            printf("\nModelo invalido! Digite apenas letras/numeros.\n");
+            continue;
+        }
+
+        // Converte o modelo digitado para maiúsculas
+        for (i = 0; v->modelo[i] != '\0'; i++)
+        {
+            v->modelo[i] = toupper(v->modelo[i]);
+        }
+
+        // Verifica se o modelo pertence a marca escolhida
+        valido = 0;
+
+        for (i = 0; i < MAX_MODELOS; i++)
+        {
+            if (strcmp(v->modelo, modelos[indiceMarca][i]) == 0)
+            {
+                valido = 1;
+                break;
             }
         }
 
         if (valido)
             break;
 
-        printf("\nModelo invalido!\n");
+        printf("\nModelo incompativel com a marca %s! Digite novamente.\n", v->marca);
     }
 
     // Ano
