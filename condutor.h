@@ -12,11 +12,11 @@ typedef struct {
 
 void condutores(Condutor *condutor);
 
-void condutores(Condutor *condutor){
+//void condutores(Condutor *condutor){
 
 
 
     
-}
+//}
 
 #endif
