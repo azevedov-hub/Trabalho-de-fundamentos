@@ -1,0 +1,1 @@
+void menu_inicial(int *opcao);
