@@ -3,9 +3,12 @@
 
 void menu_inicial(int *opcao){
 
-  
+  *opcao = 0;
   while(1){
-    system("clear");
+   
+
+
+    system("cls");
 
 printf(
 "\033[35m _______  ___   __   __    _______  _______  __   __  _______  __    _    _______  _______  _______  __   __  ______    _______  _______ \033[0m\n"
@@ -26,18 +29,25 @@ printf(
 
         
 
-        if(((*opcao<1)||(*opcao>3)) && ((*opcao != 67) && (*opcao != 0))){
-            printf("\n\n\n                                                          \033[1;31mDigite um opcao invalida!\033[0m\n");
-        } else if((*opcao != 0)){
-            break;
-        }
-        printf("\n\n\n                                                                     ");scanf(" %d",opcao);
+       
+            
+       if(((*opcao>0)&&(*opcao<4))||(*opcao == 67)){
+
+             break;
+       }else if (*opcao !=0){
+        printf("\n\n\n                                                          \033[1;31mDigite um opcao valida!\033[0m\n");
+       }
+
+        printf("\n\n\n                                                                     ");
+        scanf(" %d",opcao);
+
+        
     }
 }
 
 void menu_inicial2(int *opcao){
 
-    system("clear");
+    system("cls");
 
 printf(
 "\033[35m _______  ___   __   __    _______  _______  __   __  _______  __    _    _______  _______  _______  __   __  ______    _______  _______ \033[0m\n"

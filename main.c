@@ -8,7 +8,7 @@
 
 int main(void){
 
-    int opcao = 0; 
+    int opcao = -1; 
     int total_clientes = 0;
     int alok = 0;
 
@@ -26,7 +26,7 @@ if (arquivo == NULL){
 
     if(opcao == 1){
         system("touch teste.txt");
-        arquivo = fopen("teste.txt" , "rb");
+        arquivo = fopen("teste.txt" , "wb");
 
     }else{
 
@@ -54,15 +54,15 @@ while(1){
 
     if(opcao == 1){
         //leitura de dados do clientes
-        continue;
+       
     }
     if(opcao == 2){
 
-        continue;
+        menu_inicial2(&opcao);
     }
     if(opcao == 3){
 
-        continue;
+
     }
 
 //Fechar o programa
