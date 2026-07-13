@@ -3,6 +3,40 @@
 
 void menu_inicial(int *opcao){
 
+  
+  while(1){
+    system("clear");
+
+printf(
+"\033[35m _______  ___   __   __    _______  _______  __   __  _______  __    _    _______  _______  _______  __   __  ______    _______  _______ \033[0m\n"
+"\033[35m|       ||   | |  |_|  |  |       ||       ||  | |  ||       ||  |  | |  |       ||       ||       ||  | |  ||    _ |  |       ||       |\033[0m\n"
+"\033[35m|  _____||   | |       |  |  _____||    ___||  |_|  ||    ___||   |_| |  |  _____||    ___||    ___||  | |  ||   | ||  |   _   ||  _____|\033[0m\n"
+"\033[35m| |_____ |   | |       |  | |_____ |   |___ |       ||   |___ |       |  | |_____ |   |___ |   | __ |  |_|  ||   |_||_ |  | |  || |_____ \033[0m\n"
+"\033[35m|_____  ||   |  |     |   |_____  ||    ___||       ||    ___||  _    |  |_____  ||    ___||   ||  ||       ||    __  ||  |_|  ||_____  |\033[0m\n"
+"\033[35m _____| ||   | |   _   |   _____| ||   |___  |     | |   |___ | | |   |   _____| ||   |___ |   |_| ||       ||   |  | ||       | _____| |\033[0m\n"
+"\033[35m|_______||___| |__| |__|  |_______||_______|  |___|  |_______||_|  |__|  |_______||_______||_______||_______||___|  |_||_______||_______|\033[0m\n      " 
+
+
+
+
+ "\n\n\n\n\033[33m(1)\033[0m Cadastrar novo cliente        \033[33m(2)\033[0m Listar clientes cadastrados         \033[33m(3)\033[0m Remover cliente cadastrado          \033[33m(67)\033[0m Fechar programa\n"
+
+);
+  
+
+        
+
+        if(((*opcao<1)||(*opcao>3)) && ((*opcao != 67) && (*opcao != 0))){
+            printf("\n\n\n                                                          \033[1;31mDigite um opcao invalida!\033[0m\n");
+        } else if((*opcao != 0)){
+            break;
+        }
+        printf("\n\n\n                                                                     ");scanf(" %d",opcao);
+    }
+}
+
+void menu_inicial2(int *opcao){
+
     system("clear");
 
 printf(
@@ -16,10 +50,17 @@ printf(
 
 
 
+
+ "\n\n\n\n                                              Deseja listar os clientes por:         \n"
+
+
+"                 (1) maior cotacao anual        (2) menor cotacao anual        (3) maior cotacao mensal        (4) menor cotacao mensal\n"
+
+
 );
 
+scanf(" %d",opcao);
 
 
-
-
+    
 }

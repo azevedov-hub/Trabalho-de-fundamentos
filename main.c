@@ -3,15 +3,74 @@
 #include "veiculo.h"
 #include "cotacao.h"
 #include "menu.h"
+#include <stdlib.h>
 
 
 int main(void){
 
-    int opcao; 
-Condutor x;
+    int opcao = 0; 
+    int total_clientes = 0;
+    int alok = 0;
 
-menu_inicial(&opcao);
-condutores(&x);
+    // Fazendo a leitura do arquivo
 
+    FILE *arquivo;
+
+    arquivo = fopen("teste.txt" , "rb");
+
+if (arquivo == NULL){
+    printf("Deu merda ao abrir o arquivo\n");
+
+    printf("Dgite 1 para começar um novo arquivo ou pressione qualquer tecla para sair: ");
+    scanf(" %d",&opcao);
+
+    if(opcao == 1){
+        system("touch teste.txt");
+        arquivo = fopen("teste.txt" , "rb");
+
+    }else{
+
+        return 0;
+    }
+}
+
+if(opcao == 1){
+    fwrite(&total_clientes,sizeof(int),1,arquivo);
+}else{
+    fread(&total_clientes,sizeof(int),1,arquivo);
+}
+
+Cotacao clientes[total_clientes];
+
+fread(clientes,sizeof(Cotacao),total_clientes,arquivo);
+
+while(1){
+
+
+    menu_inicial(&opcao);
+
+
+//Cadastro de um novo cliente
+
+    if(opcao == 1){
+        //leitura de dados do clientes
+        continue;
+    }
+    if(opcao == 2){
+
+        continue;
+    }
+    if(opcao == 3){
+
+        continue;
+    }
+
+//Fechar o programa
+
+    if(opcao == 67){
+        break;
+    }
+
+}
     return 0;
 }
