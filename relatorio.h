@@ -1,7 +1,7 @@
-ifndef RELATORIO_H
+//ifndef RELATORIO_H
 #define RELATORIO_H
 
-#include "cotacao.h"
+#include "cotacaox.h"
 
 /* Mostra na tela todas as cotacoes que estao guardadas na lista */
 void listarCotacoes(Cotacao lista[], int total);
@@ -21,4 +21,4 @@ void exibirMaiorCotacaoMensal(Cotacao lista[], int total);
 /* Mostra a cotacao que tem o menor premio mensal entre todas */
 void exibirMenorCotacaoMensal(Cotacao lista[], int total);
 
-#endif
+//#endif

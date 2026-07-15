@@ -65,10 +65,8 @@ printf(
 
 
 
- "\n\n\n\n                                                    Deseja listar os clientes por:\n\n\n"
 
-
-"  \033[33m(1)\033[0m Maior cotacao anual        \033[33m(2)\033[0m Menor cotacao anual        \033[33m(3)\033[0m Maior cotacao mensal        \033[33m(4)\033[0m Menor cotacao mensal       \033[33m(67)\033[0m Voltar\n"
+"\n\n\n\n  \033[33m(1)\033[0m Maior cotacao anual        \033[33m(2)\033[0m Menor cotacao anual        \033[33m(3)\033[0m Maior cotacao mensal        \033[33m(4)\033[0m Menor cotacao mensal       \033[33m(67)\033[0m Voltar\n"
 
 
 );

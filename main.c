@@ -11,7 +11,6 @@ int main(void){
 
     int opcao = 0; 
     int total_clientes = 0;
-    int alok = 0;
 
     // Fazendo a leitura do arquivo
 
@@ -34,6 +33,8 @@ if (arquivo == NULL){
 
         return 0;
     }
+}else{
+    printf("\033[32mArquivo 1 aberto com sucesso!\033[0m\n");
 }
 
     arquivo2 = fopen("teste1.txt" , "r");
@@ -52,6 +53,8 @@ if (arquivo2 == NULL){
 
         return 0;
     }
+}else{
+    printf("\033[32mArquivo 2 aberto com sucesso!\033[0m\n");
 }
 
 
@@ -71,8 +74,8 @@ if (p == NULL) {
     printf("Erro ao alocar memória.\n");
     return 0;
 }else{
-    printf("Memória alocada com sucesso.\n");
-    system("sleep 2");
+    printf("\033[32mMemória alocada com sucesso!\033[0m\n");
+    system("sleep 4");
 }
 
 Veiculo veiculo;
@@ -147,9 +150,81 @@ while(1){
 
             menu_inicial2(&opcao);
 
-            if(opcao == 1){}
-            if(opcao == 2){}
-            if(opcao == 3){}
+            if(opcao == 1){
+                while(1){
+
+                    system("clear");
+
+                    cadastro();
+
+                   
+                    exibirMaiorCotacao(p, total_clientes);
+
+                    printf("\n\n\n                                                          \033[33m(67)\033[0m Voltar\n");
+                    
+                    scanf(" %d",&opcao);
+            
+
+                    if(opcao == 67){
+                        opcao = 0;
+                        break;
+                    }else{
+                        printf("\n\n\n                                                          \033[1;31mDigite um opcao valida!\033[0m\n");
+
+                    }
+
+            }
+            }
+            if(opcao == 2){
+                while(1){
+
+                    system("clear");
+
+                    cadastro();
+
+                   exibirMenorCotacaoMensal(p, total_clientes);
+
+                    printf("\n\n\n                                                          \033[33m(67)\033[0m Voltar\n");
+                    
+                    scanf(" %d",&opcao);
+            
+
+                    if(opcao == 67){
+                        opcao = 0;
+                        break;
+                    }else{
+                        printf("\n\n\n                                                          \033[1;31mDigite um opcao valida!\033[0m\n");
+
+                    }
+
+            }
+            }
+            if(opcao == 3){
+
+
+                while(1){
+
+                    system("clear");
+
+                    cadastro();
+
+                   exibirMaiorCotacaoMensal(p, total_clientes);
+
+                    printf("\n\n\n                                                          \033[33m(67)\033[0m Voltar\n");
+                    
+                    scanf(" %d",&opcao);
+            
+
+                    if(opcao == 67){
+                        opcao = 0;
+                        break;
+                    }else{
+                        printf("\n\n\n                                                          \033[1;31mDigite um opcao valida!\033[0m\n");
+
+                    }
+
+            }
+            }
             if(opcao == 4){
 
                 while(1){
