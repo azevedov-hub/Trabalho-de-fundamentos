@@ -15,12 +15,13 @@ int main(void){
 
     // Fazendo a leitura do arquivo
 
-    FILE *arquivo;
+    FILE *arquivo = NULL;
+    FILE *arquivo2 = NULL;
 
     arquivo = fopen("teste.txt" , "rb");
 
 if (arquivo == NULL){
-    printf("Deu merda ao abrir o arquivo\n");
+    printf("Ocorreu um erro ao abrir o arquivo 1 com os dados dos clientes\n");
 
     printf("Dgite 1 para começar um novo arquivo ou pressione qualquer tecla para sair: ");
     scanf(" %d",&opcao);
@@ -35,14 +36,32 @@ if (arquivo == NULL){
     }
 }
 
+    arquivo2 = fopen("teste1.txt" , "r");
+
+if (arquivo2 == NULL){
+    printf("\n\nOcorreu um erro ao abrir o arquivo 2 com os dados dos clientes\n");
+
+    printf("\nDgite 1 para começar um novo arquivo ou pressione qualquer tecla para sair: ");
+    scanf(" %d",&opcao);
+
+    if(opcao == 1){
+        system("touch teste.txt");
+        arquivo2 = fopen("teste1.txt" , "w");
+
+    }else{
+
+        return 0;
+    }
+}
+
 
 
 if(opcao == 1){
-    fwrite(&total_clientes, sizeof(int), 1, arquivo);
-    fclose(arquivo);
+    fprintf(arquivo2, "%d", total_clientes);
+    fclose(arquivo2);
 }else{
-    fread(&total_clientes, sizeof(int), 1, arquivo);
-    fclose(arquivo);
+    fscanf(arquivo2, "%d", &total_clientes);
+    fclose(arquivo2);
 }
 
 
@@ -78,6 +97,11 @@ while(1){
     if(opcao == 1){
 
                 total_clientes++;
+
+                arquivo2 = fopen("teste1.txt" , "w");
+                fprintf(arquivo2, "%d", total_clientes);
+                fclose(arquivo2);
+
                 p = (Cotacao *) realloc(p, sizeof(Cotacao) * total_clientes);
                 if (p == NULL) {
                     printf("Erro ao realocar memória.\n");
@@ -127,15 +151,37 @@ while(1){
             if(opcao == 2){}
             if(opcao == 3){}
             if(opcao == 4){
-                exibirMenorCotacao(p, total_clientes);
-                system("sleep 10");
+
+                while(1){
+
+                    system("clear");
+
+                    cadastro();
+
+                    exibirMenorCotacao(p, total_clientes);
+
+                    printf("\n\n\n                                                          \033[33m(67)\033[0m Voltar\n");
+                    
+                    scanf(" %d",&opcao);
+            
+
+                    if(opcao == 67){
+                        opcao = 0;
+                        break;
+                    }else{
+                        printf("\n\n\n                                                          \033[1;31mDigite um opcao valida!\033[0m\n");
+
+                    }
+
             }
-            if(opcao == 67){
+          
+        }
+          if(opcao == 67){
                 opcao = 0;
                 break;
             }
-        }
     }
+}
     if(opcao == 3){
 
 
