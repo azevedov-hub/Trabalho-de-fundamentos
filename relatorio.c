@@ -82,8 +82,89 @@ void exibirMenorCotacao(Cotacao lista[], int total)
     indiceMenor = 0;
 
     /* vai comparando com todas as outras para ver se acha uma menor */
-    for (i = 0; i < total; i++) {
+    for (i = 1; i < total; i++) {
         if (lista[i].premio_anual < lista[indiceMenor].premio_anual) {
+            indiceMenor = i;
+        }
+    }
+
+    imprimirCotacao(lista[indiceMenor], indiceMenor + 1);
+}
+
+
+/* Funcao 4: Mostrar a cotacao de maior valor (maior premio anual) */
+void exibirMaiorCotacao(Cotacao lista[], int total)
+{
+    int i;
+    int indiceMaior;
+
+    printf("\n=== COTACAO DE MAIOR VALOR (ANUAL) ===\n");
+
+    if (total == 0) {
+        printf("Nao ha nenhuma cotacao cadastrada ainda.\n");
+        return;
+    }
+
+    /* comeca assumindo que a primeira cotacao e a maior */
+    indiceMaior = 0;
+
+    /* vai comparando com todas as outras para ver se acha uma maior */
+    for (i = 1; i < total; i++) {
+        if (lista[i].premio_anual > lista[indiceMaior].premio_anual) {
+            indiceMaior = i;
+        }
+    }
+
+    imprimirCotacao(lista[indiceMaior], indiceMaior + 1);
+}
+
+
+/* Funcao 5: Mostrar a cotacao de maior valor mensal */
+void exibirMaiorCotacaoMensal(Cotacao lista[], int total)
+{
+    int i;
+    int indiceMaior;
+
+    printf("\n=== COTACAO DE MAIOR VALOR (MENSAL) ===\n");
+
+    if (total == 0) {
+        printf("Nao ha nenhuma cotacao cadastrada ainda.\n");
+        return;
+    }
+
+    /* comeca assumindo que a primeira cotacao e a maior */
+    indiceMaior = 0;
+
+    /* agora a comparacao e feita usando o premio_mensal, e nao o anual */
+    for (i = 1; i < total; i++) {
+        if (lista[i].premio_mensal > lista[indiceMaior].premio_mensal) {
+            indiceMaior = i;
+        }
+    }
+
+    imprimirCotacao(lista[indiceMaior], indiceMaior + 1);
+}
+
+
+/* Funcao 6: Mostrar a cotacao de menor valor mensal */
+void exibirMenorCotacaoMensal(Cotacao lista[], int total)
+{
+    int i;
+    int indiceMenor;
+
+    printf("\n=== COTACAO DE MENOR VALOR (MENSAL) ===\n");
+
+    if (total == 0) {
+        printf("Nao ha nenhuma cotacao cadastrada ainda.\n");
+        return;
+    }
+
+    /* comeca assumindo que a primeira cotacao e a menor */
+    indiceMenor = 0;
+
+    /* aqui tambem a comparacao usa o premio_mensal */
+    for (i = 1; i < total; i++) {
+        if (lista[i].premio_mensal < lista[indiceMenor].premio_mensal) {
             indiceMenor = i;
         }
     }
