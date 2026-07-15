@@ -82,7 +82,7 @@ void exibirMenorCotacao(Cotacao lista[], int total)
     indiceMenor = 0;
 
     /* vai comparando com todas as outras para ver se acha uma menor */
-    for (i = 1; i < total; i++) {
+    for (i = 0; i < total; i++) {
         if (lista[i].premio_anual < lista[indiceMenor].premio_anual) {
             indiceMenor = i;
         }
